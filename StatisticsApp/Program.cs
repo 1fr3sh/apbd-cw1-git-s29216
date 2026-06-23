@@ -23,6 +23,8 @@ catch (FormatException)
     return;
 }
 
+Console.WriteLine();
+Console.WriteLine("Statistics:");
 Console.WriteLine($"Sum: {StatisticsHelper.Sum(numbers)}");
 Console.WriteLine($"Average: {StatisticsHelper.CalculateAverage(numbers)}");
 Console.WriteLine($"Max: {StatisticsHelper.CalculateMax(numbers)}");
