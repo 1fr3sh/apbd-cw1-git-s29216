@@ -11,3 +11,8 @@ dotnet run
 ```
 
 Then enter integers separated by spaces, e.g. `4 8 15 16 23 42`.
+
+## Features
+
+- Sum of the entered numbers
+- Average of the entered numbers
