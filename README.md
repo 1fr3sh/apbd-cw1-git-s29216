@@ -12,6 +12,12 @@ dotnet run
 
 Then enter integers separated by spaces, e.g. `4 8 15 16 23 42`.
 
+To build the project without running it:
+
+```
+dotnet build
+```
+
 ## Features
 
 - Sum of the entered numbers
