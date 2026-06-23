@@ -23,6 +23,7 @@ dotnet build
 - Sum of the entered numbers
 - Average of the entered numbers
 - Maximum of the entered numbers
+- Minimum of the entered numbers
 
 ## Notes on the `feature-max` merge
 
@@ -32,3 +33,18 @@ While `feature-max` was being developed, an independent commit
 As a result both branches had commits the other did not, so the histories
 diverged. Git could not simply move the `main` pointer forward and instead
 created a dedicated merge commit that joins the two lines of history.
+
+## Merge vs rebase (the `feature-min` branch)
+
+The `feature-min` branch was integrated using **rebase** instead of a plain merge.
+Before integrating, an independent commit (`Add build instructions to README`) was
+added on `main`, so the branch was based on an older state of `main`.
+
+- A **merge** in this situation (like `feature-max`) would have produced a merge
+  commit and a visible fork/join in the history graph.
+- A **rebase** instead replayed the branch commits on top of the latest `main`,
+  giving each of them a new hash. The following merge into `main` was then a
+  fast-forward, so the final history is a single straight line with no merge commit.
+
+In short: merge preserves the exact branching history, while rebase rewrites the
+branch to produce a cleaner, linear history.
