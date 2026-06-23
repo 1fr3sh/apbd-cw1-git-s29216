@@ -21,4 +21,23 @@ public static class StatisticsHelper
 
         return (double)Sum(values) / values.Length;
     }
+
+    public static int CalculateMax(int[] values)
+    {
+        if (values.Length == 0)
+        {
+            throw new ArgumentException("Array must not be empty.", nameof(values));
+        }
+
+        int max = values[0];
+        foreach (int value in values)
+        {
+            if (value > max)
+            {
+                max = value;
+            }
+        }
+
+        return max;
+    }
 }
