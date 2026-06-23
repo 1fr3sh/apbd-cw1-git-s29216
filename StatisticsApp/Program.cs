@@ -24,3 +24,4 @@ catch (FormatException)
 }
 
 Console.WriteLine($"Sum: {StatisticsHelper.Sum(numbers)}");
+Console.WriteLine($"Average: {StatisticsHelper.CalculateAverage(numbers)}");
