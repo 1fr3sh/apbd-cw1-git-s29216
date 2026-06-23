@@ -48,3 +48,42 @@ added on `main`, so the branch was based on an older state of `main`.
 
 In short: merge preserves the exact branching history, while rebase rewrites the
 branch to produce a cleaner, linear history.
+
+## Submission answers
+
+### 1. When does Git perform a fast-forward and when is a merge commit created?
+
+Git performs a **fast-forward** when the target branch (e.g. `main`) has not received
+any new commits since the feature branch was created. In that case the branches have
+not diverged, so Git simply moves the branch pointer forward to the tip of the feature
+branch and no extra commit is needed.
+
+A **merge commit** is created when both branches have commits the other does not have
+(the history has diverged). Git then cannot move the pointer in a straight line, so it
+creates a new commit with two parents that joins the two lines of history. A merge
+commit can also be forced even in a fast-forward situation with `git merge --no-ff`.
+
+### 2. What is the practical difference between merge and rebase?
+
+- **Merge** keeps the real history: the branch and its separate commits are preserved,
+  and the integration point is a merge commit. The graph shows the actual fork and join.
+- **Rebase** rewrites the branch by replaying its commits on top of the latest base
+  branch, giving them new hashes. The result is a clean, linear history without merge
+  commits, but the original branching shape is lost.
+
+Practically: merge is safer and honest about how work happened (preferred for shared
+branches), while rebase produces a tidier, easier-to-read history (useful for cleaning
+up a local branch before integrating). Rebase should not be used on commits that have
+already been pushed and shared with others.
+
+### 3. How was the conflict resolved in your repository?
+
+On the `feature-conflict` branch the statistics header line was changed to
+`Console.WriteLine("===== Statistics Report =====");`, while on `main` the same line
+was changed to `Console.WriteLine("--- Calculation Results ---");`. Merging the branch
+produced a conflict on that single line.
+
+The conflict was resolved deliberately: the conflict markers were removed and the more
+descriptive branch version (`===== Statistics Report =====`) was kept as the final
+header. The project was then built and run to confirm the code still works before the
+merge commit was created.
