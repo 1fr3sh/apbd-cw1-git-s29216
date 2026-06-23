@@ -24,7 +24,7 @@ catch (FormatException)
 }
 
 Console.WriteLine();
-Console.WriteLine("--- Calculation Results ---");
+Console.WriteLine("===== Statistics Report =====");
 Console.WriteLine($"Sum: {StatisticsHelper.Sum(numbers)}");
 Console.WriteLine($"Average: {StatisticsHelper.CalculateAverage(numbers)}");
 Console.WriteLine($"Max: {StatisticsHelper.CalculateMax(numbers)}");
